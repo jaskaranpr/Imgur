@@ -121,15 +121,8 @@ const CatBar = () => {
 <div>
     ${data.map((d, i) => {
       return `
-      <style>
-       .cat-id-${i} {
-        background-image:url("${d.img}");
-        height: 130px;
-        width: 232px;
-       }
-      </style>
       
-      <div class="cat-id-${i}" >ss</div>`;
+      <div style="background-image:url('${d.img}');" class="cat-menu" >ss</div>`;
     })}
 </div>
 `;
