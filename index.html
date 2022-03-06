@@ -45,20 +45,25 @@
   }
   getDataForTags();
   document.querySelector(".navbar").innerHTML = Navbar();
-  async function getDataForPosts() {
+  async function getDataForPosts(page) {
     let res = await fetch(
-      "https://api.imgur.com/post/v1/posts?client_id=546c25a59c58ad7&filter%5Bsection%5D=eq%3Ahot&include=adtiles%2Cadconfig%2Ccover%2Cviral&location=desktophome&page=1&sort=-time"
+      `https://api.imgur.com/post/v1/posts?client_id=546c25a59c58ad7&filter%5Bsection%5D=eq%3Ahot&include=adtiles%2Cadconfig%2Ccover%2Cviral&location=desktophome&page=${page}&sort=-time`
     );
     let data = await res.json();
-
     Posts(document.querySelector(".posts"), data);
   }
-  getDataForPosts();
+  let page = 1;
+  getDataForPosts(page);
+  let total;
+  setTimeout(() => {
+    total = document.body.scrollTop + document.body.clientHeight;
+  }, 1000);
 
-  document.onscroll = function () {
-    var total = scroll.scrollTop + scroll.clientHeight;
-    console.log(total);
-
-    if (total == content.clientHeight) alert("Reached bottom!");
+  document.body.onscroll = function () {
+    if (window.scrollY > total - 500) {
+      total *= 2;
+      page++;
+      getDataForPosts(page);
+    }
   };
 </script>
