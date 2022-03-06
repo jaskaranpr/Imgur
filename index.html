@@ -47,11 +47,18 @@
   document.querySelector(".navbar").innerHTML = Navbar();
   async function getDataForPosts() {
     let res = await fetch(
-      "https://api.imgur.com/post/v1/posts?client_id=546c25a59c58ad7&filter%5Bsection%5D=eq%3Ahot&include=adtiles%2Cadconfig%2Ccover%2Cviral&location=desktophome&page=1&sort=-timetps://api.imgur.com/3/tags?client_id=546c25a59c58ad7"
+      "https://api.imgur.com/post/v1/posts?client_id=546c25a59c58ad7&filter%5Bsection%5D=eq%3Ahot&include=adtiles%2Cadconfig%2Ccover%2Cviral&location=desktophome&page=1&sort=-time"
     );
     let data = await res.json();
 
     Posts(document.querySelector(".posts"), data);
   }
   getDataForPosts();
+
+  document.onscroll = function () {
+    var total = scroll.scrollTop + scroll.clientHeight;
+    console.log(total);
+
+    if (total == content.clientHeight) alert("Reached bottom!");
+  };
 </script>
