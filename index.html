@@ -45,6 +45,7 @@
   }
   getDataForTags();
   document.querySelector(".navbar").innerHTML = Navbar();
+  let page = 1;
   async function getDataForPosts(page) {
     let res = await fetch(
       `https://api.imgur.com/post/v1/posts?client_id=546c25a59c58ad7&filter%5Bsection%5D=eq%3Ahot&include=adtiles%2Cadconfig%2Ccover%2Cviral&location=desktophome&page=${page}&sort=-time`
@@ -52,18 +53,18 @@
     let data = await res.json();
     Posts(document.querySelector(".posts"), data);
   }
-  let page = 1;
   getDataForPosts(page);
-  let total;
-  setTimeout(() => {
-    total = document.body.scrollTop + document.body.clientHeight;
-  }, 1000);
-
-  document.body.onscroll = function () {
-    if (window.scrollY > total - 500) {
-      total *= 2;
+  const showData = () => {
+    setTimeout(() => {
       page++;
       getDataForPosts(page);
-    }
+    }, 500);
   };
+
+  window.addEventListener("scroll", () => {
+    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
+    if (scrollTop + clientHeight === scrollHeight) {
+      showData();
+    }
+  });
 </script>
