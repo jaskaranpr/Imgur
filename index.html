@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/posts.css" />
+
     <title>Document</title>
   </head>
 
@@ -31,7 +33,7 @@
   crossorigin="anonymous"
 ></script>
 <script type="module">
-  import Posts from "./components/Posts.js";
+  import Posts from "./components/posts.js";
   import CatBar from "./components/catbar.js";
   import Navbar from "./components/navbar.js";
   async function getDataForTags() {
@@ -43,12 +45,13 @@
   }
   getDataForTags();
   document.querySelector(".navbar").innerHTML = Navbar();
-  function getDataForPosts() {
+  async function getDataForPosts() {
     let res = await fetch(
       "https://api.imgur.com/post/v1/posts?client_id=546c25a59c58ad7&filter%5Bsection%5D=eq%3Ahot&include=adtiles%2Cadconfig%2Ccover%2Cviral&location=desktophome&page=1&sort=-timetps://api.imgur.com/3/tags?client_id=546c25a59c58ad7"
     );
     let data = await res.json();
-   console.log(data)
-    document.querySelector(".posts");
+
+    Posts(document.querySelector(".posts"), data);
   }
+  getDataForPosts();
 </script>
