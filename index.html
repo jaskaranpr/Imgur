@@ -16,9 +16,11 @@
       <h1 class="message">
         I'm here to browse Imgur and chew bubblegum...and I'm all outta gum
       </h1>
+      <div id="posts"></div>
+      <button id="gallerybtn">hello</button>
+      <div id="post"></div>
       <div class="bar"></div>
     </header>
-    <input type="file" />
   </body>
 </html>
 <script
@@ -30,4 +32,37 @@
   import Navbar from "./components/navbar.js";
   document.querySelector(".navbar").innerHTML = Navbar();
   document.querySelector(".bar").innerHTML = CatBar();
+
+  document.getElementById("gallerybtn").addEventListener("click", function () {
+    window.location.href = "./gallery/gallery.html";
+  });
+
+  const getData = async (req, res) => {
+    try {
+      let res = await fetch(
+        "https://api.imgur.com/post/v1/posts?client_id=88c1a76b6435585&filter%5Bsection%5D=eq%3Ahot&include=adtiles%2Cadconfig%2Ccover%2Cviral&page=1&sort=-time"
+      );
+      let data = await res.json();
+      displaybtn(data);
+    } catch (err) {
+      console.log("err:", err);
+    }
+  };
+  getData();
+
+  function displaybtn(data) {
+    data.map((item) => {
+      let btn = document.createElement("btn");
+      btn.innerText = `${item.title}`;
+      btn.addEventListener("click", function () {
+        specific(item);
+        window.location.href = "./gallery/gallery.html";
+      });
+      let br = document.createElement("br");
+      document.getElementById("post").append(br, btn);
+    });
+  }
+  function specific(post) {
+    localStorage.setItem("post", JSON.stringify(post));
+  }
 </script>
