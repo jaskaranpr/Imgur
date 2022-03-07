@@ -100,3 +100,10 @@
 .postInfo div p:hover {
   opacity: 905;
 }
+
+.posts {
+  position: absolute;
+  top: 370px;
+  left: 50%;
+  transform: translateX(-50%);
+}

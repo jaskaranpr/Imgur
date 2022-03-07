@@ -93,10 +93,11 @@
   align-items: center;
 }
 .bar {
-  width: 90%;
+  width: 79%;
   overflow: hidden;
   margin: auto;
 }
+
 .tagDiv {
   /* height: 130px; */
   padding-bottom: 20px;
@@ -105,6 +106,9 @@
   overflow: hidden;
   border-radius: 3px;
   background-color: rgb(50, 141, 103);
+}
+.tagDiv:hover {
+  transform: translateY(-5px);
 }
 .tagDiv h1 {
   font-size: 14px;
@@ -132,6 +136,13 @@
   height: 50%;
 }
 
+.featured {
+  width: 200px;
+  height: 170px;
+}
+.featured > img {
+  width: 100%;
+}
 .bar > div {
   margin: auto;
   width: fit-content;

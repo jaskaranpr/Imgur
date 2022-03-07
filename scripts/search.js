@@ -9,6 +9,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
     searchRes.classList.remove("none");
   });
 
+  document.querySelector(".searchForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
+
+  input.addEventListener("keypress", function (e) {});
+
   async function search(value) {
     let res = await fetch(
       `https://api.imgur.com/3/suggest?client_id=546c25a59c58ad7&inflate=tags&q=${value}&types=users%2Ctags%2Cposts`
@@ -26,10 +32,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function showDataToSearchRes({ tags }) {
-    input.addEventListener("focusout", function () {
-      searchRes.classList.add("none");
-    });
-
     searchRes.innerHTML = "";
     tags.map((tag) => {
       let postDiv = document.createElement("div");
@@ -40,6 +42,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
       h3.innerText = tag.name;
       postDiv.append(imgDiv, h3);
       searchRes.appendChild(postDiv);
+      postDiv.addEventListener("click", () => {
+        console.log("d");
+        window.location.href = "tag.html?tag=" + tag.name;
+      });
     });
   }
 });

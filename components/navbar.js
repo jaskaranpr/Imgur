@@ -3,7 +3,9 @@ const Navbar = () => {
   return `
 <nav class="main-navbar">
   <div class="navLogo-left">
+  <a href="/">
     ${Logo}
+    </a>
     <a class="upload-btn btn" href="/upload"><img style="margin-right:10px;"
         src="https://s.imgur.com/desktop-assets/desktop-assets/icon-new-post.13ab64f9f36ad8f25ae3544b350e2ae1.svg"><span
         class="newPostLabel">New post</span></a>

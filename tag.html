@@ -15,6 +15,7 @@
     <header class="main-header">
       <div class="navbar"></div>
     </header>
+    <div class="posts"></div>
   </body>
 </html>
 <script
@@ -24,6 +25,7 @@
 
 <script type="module">
   import Navbar from "./components/navbar.js";
+  import Posts from "./components/posts.js";
   document.querySelector(".navbar").innerHTML = Navbar();
 
   async function getPosts() {
@@ -35,7 +37,8 @@
     document.querySelector(
       ".main-header"
     ).style.background = `linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 20%), url(https://i.imgur.com/${data.background_id}.jpg)`;
-    console.log(data);
+    Posts(document.querySelector(".posts"), data.posts);
   }
   getPosts();
 </script>
+<script src="./scripts/search.js"></script>
