@@ -18,7 +18,7 @@ const Navbar = () => {
         <img src="https://s.imgur.com/desktop-assets/desktop-assets/icon-search.8d0f9b564a4659d48d8eca38b968a7f2.svg">
       </button>
     </form>
-    <div class="searchResult" ></div>
+    <div class="searchResult none" ></div>
   </div>
   <div class="account-right">
     <a href="" class="btn add-free-btn">Go Ad-Free</a>

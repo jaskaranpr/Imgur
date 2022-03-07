@@ -1,10 +1,12 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-  console.log("DOM fully loaded and parsed");
   let input = document.querySelector(".searchbar");
-
+  let searchRes = document.querySelector(".searchResult");
   input.addEventListener("input", function (e) {
-    console.log(e.target.value);
     if (e.target.value.length > 0) debouncing(e.target.value);
+    else searchRes.classList.add("none");
+  });
+  input.addEventListener("focus", function () {
+    searchRes.classList.remove("none");
   });
 
   async function search(value) {
@@ -24,8 +26,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function showDataToSearchRes({ tags }) {
-    console.log(tags);
-    let searchRes = document.querySelector(".searchResult");
+    input.addEventListener("focusout", function () {
+      searchRes.classList.add("none");
+    });
+
     searchRes.innerHTML = "";
     tags.map((tag) => {
       let postDiv = document.createElement("div");

@@ -34,7 +34,7 @@
     let data = await res.json();
     document.querySelector(
       ".main-header"
-    ).style.background = `linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 20%), url('${data.background_id}')`;
+    ).style.background = `linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 20%), url(https://i.imgur.com/${data.background_id}.jpg)`;
     console.log(data);
   }
   getPosts();
