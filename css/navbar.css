@@ -172,3 +172,20 @@
   border: 1px solid #4f4f4f;
   z-index: 9999;
 }
+.postsRes {
+  display: flex;
+  padding-left: 10px;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+  margin: 10px 0;
+}
+.postsRes:hover {
+  background: #5d6674;
+}
+.postsRes > div {
+  width: 40px;
+  border-radius: 3px;
+  height: 40px;
+  background-position: center;
+}

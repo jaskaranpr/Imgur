@@ -23,21 +23,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }, 1000);
   }
 
-  function showDataToSearchRes({ posts, tags, users }) {
+  function showDataToSearchRes({ tags }) {
+    console.log(tags);
     let searchRes = document.querySelector(".searchResult");
     searchRes.innerHTML = "";
-    let postDiv = document.createElement("div");
-    posts.classList.add("postsRes");
-    let tagsDiv = document.createElement("div");
-    tags.classList.add("tagsRes");
-    let usersDiv = document.createElement("div");
-    users.classList.add("usersRes");
-    for (let i = 0; i < 3; i++) {
-      let post = document.createElement("h1");
-      post.innerText = posts[i].title;
-      let tag = document.createElement("h2");
-      tag.innerText = tags[i].name;
-      let user = document.createElement("h3");
-    }
+    tags.map((tag) => {
+      let postDiv = document.createElement("div");
+      postDiv.classList.add("postsRes");
+      let imgDiv = document.createElement("div");
+      imgDiv.style.background = `url('https://i.imgur.com/${tag.background_hash}.jpg?maxwidth=300&shape=thumb&fidelity=high')`;
+      let h3 = document.createElement("h3");
+      h3.innerText = tag.name;
+      postDiv.append(imgDiv, h3);
+      searchRes.appendChild(postDiv);
+    });
   }
 });
