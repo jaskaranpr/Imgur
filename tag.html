@@ -16,6 +16,26 @@
       <div class="navbar"></div>
     </header>
     <div class="posts"></div>
+
+    <div class="loadingDiv none">
+      <div
+        class="loading"
+        style="font-size: 200px; --duration: 2s; --num-dot: 10;"
+      >
+        <!--  index start from 0  -->
+        <div style="--index: 0;"></div>
+        <div style="--index: 1;"></div>
+        <div style="--index: 2;"></div>
+        <div style="--index: 3;"></div>
+        <div style="--index: 4;"></div>
+        <div style="--index: 5;"></div>
+        <div style="--index: 6;"></div>
+        <div style="--index: 7;"></div>
+        <div style="--index: 8;"></div>
+        <div style="--index: 9;"></div>
+        <!--  index ended with (var(--num-dot) - 1)  -->
+      </div>
+    </div>
   </body>
 </html>
 <script
@@ -30,6 +50,7 @@
 
   async function getPosts() {
     const pathname = window.location.href.split("?tag=")[1];
+    loadingAnimation();
     let res = await fetch(
       `https://api.imgur.com/post/v1/posts/t/${pathname}?client_id=546c25a59c58ad7&filter%5Bwindow%5D=week&include=adtiles%2Cadconfig%2Ccover&page=1&sort=-viral`
     );
@@ -40,5 +61,14 @@
     Posts(document.querySelector(".posts"), data.posts.slice(0, 30));
   }
   getPosts();
+
+  function loadingAnimation() {
+    let loading = document.querySelector(".loadingDiv");
+    loading.classList.remove("none");
+    let time = 5000;
+    setTimeout(() => {
+      loading.classList.add("none");
+    }, time);
+  }
 </script>
 <script src="./scripts/search.js"></script>

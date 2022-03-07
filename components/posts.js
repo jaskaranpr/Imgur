@@ -1,4 +1,4 @@
-const Posts = (element, data) => {
+const Posts = (element, data, page) => {
   let colors = [
     "#4D549A",
     "#328D67",
@@ -13,6 +13,8 @@ const Posts = (element, data) => {
   ];
   let main = document.createElement("div");
   main.classList.add("mainPosts");
+  main.classList.add(`post-page-${page}`);
+  main.classList.add("none");
   data.map((post) => {
     const container = document.createElement("div");
     container.classList.add("mainConPost");
