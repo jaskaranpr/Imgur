@@ -37,7 +37,7 @@
     document.querySelector(
       ".main-header"
     ).style.background = `linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 20%), url(https://i.imgur.com/${data.background_id}.jpg)`;
-    Posts(document.querySelector(".posts"), data.posts);
+    Posts(document.querySelector(".posts"), data.posts.slice(0, 30));
   }
   getPosts();
 </script>
