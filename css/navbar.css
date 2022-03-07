@@ -148,3 +148,27 @@
   text-transform: uppercase;
   margin: 0px 0px 20px 30px;
 }
+
+/* //////////// */
+
+.navSearxh-center {
+  position: relative;
+}
+
+.searchResult {
+  position: absolute;
+  width: 100%;
+  color: #b5b9c2;
+  font-size: 17px;
+  line-height: 2.24;
+  letter-spacing: 0.9px;
+  padding: 8px 8px 27px;
+  border-radius: 4px;
+  background-color: #3c424b;
+  box-shadow: 0 22px 40px 0 rgb(0 0 0 / 25%);
+  margin-top: 11px;
+  min-width: 380px;
+  text-align: left;
+  border: 1px solid #4f4f4f;
+  z-index: 9999;
+}

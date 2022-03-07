@@ -1,5 +1,4 @@
 const Posts = (element, data) => {
-  console.log(data);
   let colors = [
     "#4D549A",
     "#328D67",

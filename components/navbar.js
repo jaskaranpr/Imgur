@@ -1,6 +1,6 @@
 import Logo from "../assets/logo.js";
 const Navbar = () => {
-return `
+  return `
 <nav class="main-navbar">
   <div class="navLogo-left">
     ${Logo}
@@ -18,6 +18,7 @@ return `
         <img src="https://s.imgur.com/desktop-assets/desktop-assets/icon-search.8d0f9b564a4659d48d8eca38b968a7f2.svg">
       </button>
     </form>
+    <div class="searchResult" ></div>
   </div>
   <div class="account-right">
     <a href="" class="btn add-free-btn">Go Ad-Free</a>
