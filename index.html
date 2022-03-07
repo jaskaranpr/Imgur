@@ -51,7 +51,9 @@
       `https://api.imgur.com/post/v1/posts?client_id=546c25a59c58ad7&filter%5Bsection%5D=eq%3Ahot&include=adtiles%2Cadconfig%2Ccover%2Cviral&location=desktophome&page=${page}&sort=-time`
     );
     let data = await res.json();
-    Posts(document.querySelector(".posts"), data);
+    if (data.length > 40)
+      Posts(document.querySelector(".posts"), data.splice(0, 40));
+    else Posts(document.querySelector(".posts"), data);
   }
   getDataForPosts(page);
   const showData = () => {

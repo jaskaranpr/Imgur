@@ -29,20 +29,14 @@ const Posts = (element, data) => {
       content = document.createElement("img");
       content.src = post.cover.url;
     } else {
-      content = document.createElement("video");
-      content.classList.add("postVideo");
-      content.setAttribute("muted", "");
-      content.setAttribute("autoplay", "");
-      let source = document.createElement("source");
-      source.src = post.cover.url;
-      source.type = post.cover.mime_type;
-      content.append(source);
+      content = document.createElement("div");
+      content.innerHTML = `<video class="postVideo" autoplay loop muted playsinline >
+     <source src="${post.cover.url}" type="${post.cover.mime_type}">
+     </video>`;
     }
     div.classList.add(
       post.cover.width > post.cover.height ? "vertical" : "horizontal"
     );
-    let Text = document.createElement("div");
-    let h1 = document.createElement("h1");
     let postInfo = document.createElement("div");
     postInfo.innerHTML = `
      <div class="postInfo">

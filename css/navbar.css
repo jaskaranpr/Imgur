@@ -94,11 +94,13 @@
 }
 .bar {
   width: 90%;
+  overflow: hidden;
   margin: auto;
 }
 .tagDiv {
   /* height: 130px; */
   padding-bottom: 20px;
+  cursor: pointer;
   width: 110px;
   overflow: hidden;
   border-radius: 3px;
