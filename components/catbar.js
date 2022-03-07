@@ -14,6 +14,9 @@ const CatBar = (element, AllData) => {
     <p>FEATURED 234394 Posts </p>
    </div>
   `;
+  div.addEventListener("click", () => {
+    window.location.href = "tag.html?tag=comic";
+  });
   main.append(div);
 
   data.map((d) => {
@@ -30,6 +33,9 @@ const CatBar = (element, AllData) => {
       <p>${posts} Posts </p>
      </div>
     `;
+    div.addEventListener("click", () => {
+      window.location.href = "tag.html?tag=" + d.display_name.toLowerCase();
+    });
     main.append(div);
   });
 
